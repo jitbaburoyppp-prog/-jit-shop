@@ -369,16 +369,35 @@
     renderProducts();
   </script>
   
-<div id="imageViewer" onclick="this.style.display='none'" style="display:none; position:fixed; inset:0; background:#000e; z-index:9999; align-items:center; justify-content:center; padding:20px; cursor:zoom-out;">
+<div id="imageViewer" onclick="closeImage()" style="display:none; position:fixed; inset:0; background:#000e; z-index:9999; align-items:center; justify-content:center; padding:20px; cursor:zoom-out;">
   <span style="position:absolute; top:20px; right:25px; color:white; font-size:35px;">&times;</span>
   <img id="largeImage" src="" alt="বড় ছবি" style="max-width:100%; max-height:90vh; object-fit:contain;">
 </div>
 
+
 <script>
+let imageHistoryOpen = false;
+
+function closeImage() {
+  document.getElementById('imageViewer').style.display = 'none';
+  imageHistoryOpen = false;
+}
+
 function openImage(src) {
   document.getElementById('largeImage').src = src;
   document.getElementById('imageViewer').style.display = 'flex';
+
+  if (!imageHistoryOpen) {
+    history.pushState({ imageViewer: true }, '');
+    imageHistoryOpen = true;
+  }
 }
+
+window.addEventListener('popstate', function() {
+  if (imageHistoryOpen) {
+    closeImage();
+  }
+});
 </script>
 
 </body>
