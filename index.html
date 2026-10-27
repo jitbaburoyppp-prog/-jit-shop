@@ -27,7 +27,47 @@
       background: linear-gradient(135deg,#dbeafe,#eff6ff);
       text-align: center;
       padding: 28px 16px;
-    }
+    }/* Dark Mode */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+  background: #222222;
+  color: #ffffff;
+}
+
+body.dark-mode .hero {
+  background: #1b1b1b;
+  color: #ffffff;
+}
+
+body.dark-mode .hero p {
+  color: #cccccc;
+}
+
+body.dark-mode .card,
+body.dark-mode .cart,
+body.dark-mode .search,
+body.dark-mode select {
+  background: #222222;
+  color: #f1f1f1;
+}
+
+body.dark-mode .section-title,
+body.dark-mode .info h3 {
+  color: #f1f1f1;
+}
+
+body.dark-mode .price {
+  color: #34d399;
+}
     .hero h2 { margin: 0 0 8px; font-size: 25px; }
     .hero p { color: #475569; margin-bottom: 0; }
     .search {
