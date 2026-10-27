@@ -209,9 +209,16 @@ body.dark-mode .price {
 
 <body>
   <header>
-    <h1>🛍️ Jit Shop</h1>
-    <p>তোমার পছন্দের পোশাক, তোমার হাতের নাগালে</p>
-  </header>
+    
+<header>
+  <div style="position:absolute; top:12px; right:12px; display:flex; gap:6px;">
+    <button onclick="setTheme('light')" aria-label="Light mode" style="border:none; border-radius:50%; width:34px; height:34px; font-size:18px; background:#fff; cursor:pointer;">☀️</button>
+    <button onclick="setTheme('dark')" aria-label="Dark mode" style="border:none; border-radius:50%; width:34px; height:34px; font-size:18px; background:#333; cursor:pointer;">🌙</button>
+  </div>
+  <h1>🛍️ Jit Shop</h1>
+  <p>তোমার পছন্দের পোশাক, তোমার হাতের নাগালে</p>
+</header>
+
 
   <section class="hero">
     <h2>নতুন কালেকশন দেখো</h2>
