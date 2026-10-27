@@ -413,6 +413,23 @@ body.dark-mode .price {
     }
 
     renderProducts();
+    function setTheme(theme) {
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
+  }
+
+  localStorage.setItem("jitShopTheme", theme);
+}
+
+const savedTheme = localStorage.getItem("jitShopTheme");
+
+if (savedTheme === "dark") {
+  setTheme("dark");
+} else {
+  setTheme("light");
+}
   </script>
   
 <div id="imageViewer" onclick="closeImage()" style="display:none; position:fixed; inset:0; background:#000e; z-index:9999; align-items:center; justify-content:center; padding:20px; cursor:zoom-out;">
