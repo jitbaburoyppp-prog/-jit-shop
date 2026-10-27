@@ -268,7 +268,10 @@
         <article class="card">
         <span class="discount-badge">38.8% ডিসকাউন্ট</span>
           <img src="${p.image}" alt="${p.name}"
-            loading="lazy" onerror="this.style.display='none'">
+  loading="lazy"
+  onclick="openImage(this.src)"
+  style="cursor: zoom-in;"
+  onerror="this.style.display='none'">
           <div class="info">
             <h3>${p.name}</h3>
             <div class="price">৳${p.price}</div>
