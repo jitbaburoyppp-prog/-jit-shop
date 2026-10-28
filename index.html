@@ -396,16 +396,22 @@ body.dark-mode .price {
         container.innerHTML =
           '<p class="empty">এখনও কোনো পণ্য যোগ করোনি।</p>';
       } else {
-        container.innerHTML = cart.map((item, index) => `
-          <div class="cart-row">
-            <span>${item.name} (${item.size}) × ${item.qty}</span>
-            <span>
-              ৳${item.price * item.qty}
-              <button class="remove-btn"
-                onclick="removeFromCart(${index})">✕</button>
-            </span>
-          </div>
-        `).join("");
+       container.innerHTML = cart.map((item, index) => `
+  <div class="cart-row" style="display:flex;align-items:center;gap:12px;padding:10px 0;">
+    <img src="${item.image}" alt="${item.name}"
+      style="width:75px;height:75px;object-fit:cover;border-radius:10px;flex-shrink:0;">
+
+    <div style="flex:1;min-width:0;">
+      <strong>${item.name}</strong>
+      <p style="margin:6px 0;">সাইজ: ${item.size}</p>
+      <p style="margin:6px 0;">পরিমাণ: ${item.qty}</p>
+      <strong>৳${item.price * item.qty}</strong>
+    </div>
+
+    <button class="remove-btn"
+      onclick="removeFromCart(${index})">✕</button>
+  </div>
+`).join(""); 
       }
 
       const total = cart.reduce(
