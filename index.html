@@ -8,6 +8,17 @@
   <title>Jit Shop | অনলাইন পোশাকের দোকান</title>
 
   <style>
+    /* Light mode: কালো লেখা */
+.card h3,
+.card .product-name {
+  color: #111827 !important;
+}
+
+/* Dark mode: সাদা লেখা */
+body.dark-mode .card h3,
+body.dark-mode .card .product-name {
+  color: #ffffff !important;
+}
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -520,17 +531,7 @@ window.addEventListener('popstate', function() {
   if (imageHistoryOpen) {
     closeImage();
   }
-}); /* Light mode: কালো লেখা */
-.card h3,
-.card .product-name {
-  color: #111827 !important;
-}
-
-/* Dark mode: সাদা লেখা */
-body.dark-mode .card h3,
-body.dark-mode .card .product-name {
-  color: #ffffff !important;
-}
+});
 </script>
 
 </body>
