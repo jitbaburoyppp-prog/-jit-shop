@@ -7,7 +7,18 @@
   <meta name="theme-color" content="#172554">
   <title>Jit Shop | অনলাইন পোশাকের দোকান</title>
 
-  <style>
+  <style>/* কার্টে পণ্য যোগ হলে সবুজ ইফেক্ট */
+.card.added-to-cart {
+  animation: cartSuccess 0.65s ease;
+  border: 2px solid #10b981 !important;
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.45) !important;
+}
+
+@keyframes cartSuccess {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
     /* Light mode: কালো লেখা */
 .card h3,
 .card .product-name {
@@ -400,21 +411,39 @@ body.dark-mode .price {
       `).join("");
     }
 
-    function addToCart(id) {
-      const product = products.find(p => p.id === id);
-      const size = document.getElementById("size-" + id).value;
-      const existing = cart.find(
-        item => item.id === id && item.size === size
-      );
+    
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const size = document.getElementById("size-" + id).value;
 
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ ...product, size, qty: 1 });
-      }
+  const existing = cart.find(
+    item => item.id === id && item.size === size
+  );
 
-      renderCart();
-    }
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ ...product, size, qty: 1 });
+  }
+
+  renderCart();
+
+  // যে প্রোডাক্টটি যোগ হয়েছে, তার কার্ড খুঁজে বের করা
+  const card = document.querySelector(
+    `.card[data-id="${id}"]`
+  );
+
+  if (card) {
+    card.classList.remove("added-to-cart");
+    void card.offsetWidth;
+    card.classList.add("added-to-cart");
+
+    setTimeout(() => {
+      card.classList.remove("added-to-cart");
+    }, 900);
+  }
+}
+
 
     function removeFromCart(index) {
       cart.splice(index, 1);
